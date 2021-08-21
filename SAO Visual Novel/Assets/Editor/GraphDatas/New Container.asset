@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ab4af676c4d1c54e9269f547fa20f06, type: 3}
+  m_Name: New Container
+  m_EditorClassIdentifier: 
+  entryNodeData:
+    nodeGuid: b70ed30d-df4f-44a5-8d38-7d30acabf264
+    position: {x: -158.40001, y: -105.600006}
+    firstNodeGuid: ea9faea1-3e0b-4690-8cce-22657dd7fc3f
+  subgraphNodeDatas:
+  - nodeGuid: a894a6cd-9b3b-48a1-9434-d4d8fd3f8dab
+    position: {x: 539.2, y: -24.800001}
+    data: {fileID: 0}
+  nodeDatas:
+  - nodeGuid: ea9faea1-3e0b-4690-8cce-22657dd7fc3f
+    position: {x: 256.80002, y: -60}
+    group: {fileID: 11400000, guid: 0462d277b229cab489a619aad7c7fd1b, type: 2}
+    choiceCount: 0
+    hasChoice: 0
+  nodeEdgeDatas:
+  - startNodeGuid: b70ed30d-df4f-44a5-8d38-7d30acabf264
+    endNodeGuid: ea9faea1-3e0b-4690-8cce-22657dd7fc3f
+    startPortIndex: 0
+  - startNodeGuid: ea9faea1-3e0b-4690-8cce-22657dd7fc3f
+    endNodeGuid: a894a6cd-9b3b-48a1-9434-d4d8fd3f8dab
+    startPortIndex: 0

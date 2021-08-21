@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf31b1df4a774e47b042e4c695e572f, type: 3}
+  m_Name: SLot0_1
+  m_EditorClassIdentifier: 
+  group: {fileID: 11400000, guid: dadd95c69a2699a4ca5bc91ea6ac917c, type: 2}
+  idManager: {fileID: 11400000, guid: f4f0d818b2920e84594d2b97b23aafd2, type: 2}
+  dataAddress: dataslot1
+  contentIndex: 0
+  saveDate: 4/12/2021 7:16:08 PM
+  charImageList:
+  - {fileID: 21300000, guid: 612fb9e0e54af444cb58a947ec5a6a7f, type: 3}
+  - {fileID: 21300000, guid: f7333e9dfec37684e800c8eaa01a0f9d, type: 3}
+  - {fileID: 21300000, guid: 0a50e863461ac0d4eaee4545bc8bd5b9, type: 3}

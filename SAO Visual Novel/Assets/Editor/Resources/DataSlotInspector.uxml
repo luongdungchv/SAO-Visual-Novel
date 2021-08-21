@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<engine:UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:engine="UnityEngine.UIElements"
+    xmlns:editor="UnityEditor.UIElements"
+    xsi:noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd"
+>
+    <engine:VisualElement class="dataslot-inspector" name="group">
+      <engine:Label text="Group"/>
+      <editor:ObjectField binding-path="group"/>
+    </engine:VisualElement>
+
+    <engine:VisualElement class="dataslot-inspector" name="idManager">
+      <engine:Label text="IdManager"/>
+      <editor:ObjectField binding-path="idManager"/>
+    </engine:VisualElement>
+
+    <engine:VisualElement class="dataslot-inspector" name="dataAddress">
+      <engine:Label text="DataAddress"/>
+      <engine:TextField binding-path="dataAddress"/>
+    </engine:VisualElement>
+
+    <engine:VisualElement class="dataslot-inspector" name="contentIndex">
+      <engine:Label text="ContentIndex"/>
+      <engine:TextField binding-path="contentIndex"/>
+    </engine:VisualElement>
+
+    <engine:VisualElement class="dataslot-inspector" name="saveDate">
+      <engine:Label text ="SaveDate"/>
+      <engine:TextField binding-path="saveDate"/>
+    </engine:VisualElement>
+
+  <engine:Foldout text ="Character Images" binding-path="charImageList">
+    <editor:ObjectField binding-path="charImageList.Array.data[0]"/>
+    <editor:ObjectField binding-path="charImageList.Array.data[1]"/>
+    <editor:ObjectField binding-path="charImageList.Array.data[2]"/>
+  </engine:Foldout>
+    <engine:Button text ="Modify Data"/>
+</engine:UXML>

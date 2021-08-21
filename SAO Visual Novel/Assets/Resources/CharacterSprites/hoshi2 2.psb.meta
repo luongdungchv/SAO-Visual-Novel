@@ -1,0 +1,395 @@
+fileFormatVersion: 2
+guid: 41d2a2fe762de3845917e4bdd8fa8423
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: b2a9591990af98743ba3ff7cf1000886, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 1
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    isReadable: 0
+    streamingMipmaps: 1
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    ignorePngGamma: 0
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  spriteImportData:
+  - name: hoshi2 2_1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 3300
+      height: 4880
+    spriteID: 
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 0, y: 0}
+  mosaicSpriteImportData: []
+  rigSpriteImportData:
+  - name: hairline
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4513
+      width: 1033
+      height: 1296
+    spriteID: b736e326d1d2b6648b747a4bfab50ccf
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -1198, y: 1307}
+  - name: embarrased2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 5817
+      width: 764
+      height: 536
+    spriteID: 691bd26a97700594e841e7fcd0e95b98
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -1262, y: 2414}
+  - name: embarrased
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 6361
+      width: 764
+      height: 536
+    spriteID: c2b8b82f3ba8cc9488500a1c04633a2d
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -1262, y: 2958}
+  - name: upset
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1045
+      y: 4991
+      width: 664
+      height: 453
+    spriteID: 26f4b4534e6a06f4fb12c212bd8fb240
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -221, y: 1515}
+  - name: surprised
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 6905
+      width: 664
+      height: 508
+    spriteID: 0fb185f4866a569448034b4198316dec
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -1262, y: 3436}
+  - name: sad
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 7421
+      width: 666
+      height: 469
+    spriteID: 87ecaf30316a85c45ac58f4fad5f96b9
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -1266, y: 3940}
+  - name: smile
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1045
+      y: 4513
+      width: 664
+      height: 470
+    spriteID: 9ecc91f34bd88764e9b8fdcb45c96d57
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -221, y: 1031}
+  - name: school
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 1738
+      height: 4501
+    spriteID: df6b7d62c8b267147ac3c0cc30dfc0e4
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -743, y: 4}
+  - name: swimwear
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1750
+      y: 4
+      width: 1586
+      height: 4501
+    spriteID: 5e6aee54a55b9c94fbbd4f554abfaf24
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 964, y: 4}
+  platformSettings: []
+  mosaicLayers: 1
+  documentPivot: {x: 0, y: 0}
+  documentAlignment: 7
+  importHiddenLayers: 0
+  importedTextureWidth: 1024
+  importedTextureHeight: 2048
+  documentSize: {x: 3300, y: 4880}
+  paperDollMode: 0
+  keepDupilcateSpriteName: 0
+  spriteCategoryList:
+    categories: []
+  textureActualWidth: 4096
+  textureActualHeight: 8192
+  spritePackingTag: 
+  resliceFromLayer: 0
+  characterMode: 1
+  mosaicPSDLayers: []
+  rigPSDLayers:
+  - name: hairline
+    spriteName: hairline
+    isGroup: 0
+    parentIndex: -1
+    spriteID: b736e326d1d2b6648b747a4bfab50ccf
+    layerID: 0
+    mosaicPosition: {x: 4, y: 4513}
+  - name: expressions
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: 00000000000000000000000000000000
+    layerID: 716346945
+    mosaicPosition: {x: 0, y: 0}
+  - name: embarrased2
+    spriteName: embarrased2
+    isGroup: 0
+    parentIndex: 1
+    spriteID: 691bd26a97700594e841e7fcd0e95b98
+    layerID: -2111737470
+    mosaicPosition: {x: 4, y: 5817}
+  - name: embarrased
+    spriteName: embarrased
+    isGroup: 0
+    parentIndex: 1
+    spriteID: c2b8b82f3ba8cc9488500a1c04633a2d
+    layerID: 1197941552
+    mosaicPosition: {x: 4, y: 6361}
+  - name: upset
+    spriteName: upset
+    isGroup: 0
+    parentIndex: 1
+    spriteID: 26f4b4534e6a06f4fb12c212bd8fb240
+    layerID: 338250439
+    mosaicPosition: {x: 1045, y: 4991}
+  - name: surprised
+    spriteName: surprised
+    isGroup: 0
+    parentIndex: 1
+    spriteID: 0fb185f4866a569448034b4198316dec
+    layerID: -1170920611
+    mosaicPosition: {x: 4, y: 6905}
+  - name: sad
+    spriteName: sad
+    isGroup: 0
+    parentIndex: 1
+    spriteID: 87ecaf30316a85c45ac58f4fad5f96b9
+    layerID: 696030022
+    mosaicPosition: {x: 4, y: 7421}
+  - name: smile
+    spriteName: smile
+    isGroup: 0
+    parentIndex: 1
+    spriteID: 9ecc91f34bd88764e9b8fdcb45c96d57
+    layerID: 1514357614
+    mosaicPosition: {x: 1045, y: 4513}
+  - name: outfit
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: 00000000000000000000000000000000
+    layerID: -419056607
+    mosaicPosition: {x: 0, y: 0}
+  - name: school
+    spriteName: school
+    isGroup: 0
+    parentIndex: 8
+    spriteID: df6b7d62c8b267147ac3c0cc30dfc0e4
+    layerID: 35359658
+    mosaicPosition: {x: 4, y: 4}
+  - name: swimwear
+    spriteName: swimwear
+    isGroup: 0
+    parentIndex: 8
+    spriteID: 5e6aee54a55b9c94fbbd4f554abfaf24
+    layerID: -793558031
+    mosaicPosition: {x: 1750, y: 4}
+  characterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+  generateGOHierarchy: 0
+  textureAssetName: hoshi2 1 Texture
+  prefabAssetName: hoshi2 1 Prefab
+  spriteLibAssetName: hoshi2 1 Sprite Lib
+  secondarySpriteTextures: []

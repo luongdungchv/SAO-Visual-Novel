@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<engine:UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:engine="UnityEngine.UIElements"
+    xmlns:editor="UnityEditor.UIElements"
+    xsi:noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd"
+>
+  <engine:VisualElement name="backgroundImage" class="inspect-other-element">
+    <engine:Label text ="Background Image"/>
+    <editor:ObjectField allow-scene-objects="false"/>
+  </engine:VisualElement>
+
+  <engine:VisualElement name="hasTransition" class="inspect-other-element">
+      <engine:Label text ="Has Transition"/>
+      <engine:Toggle/>
+    </engine:VisualElement>
+
+  <editor:ToolbarMenu name="colorSelector"/>
+  
+    <engine:VisualElement name="hasTextTransition" class="inspect-other-element">
+      <engine:Label text ="Has Text Transition"/>
+      <engine:Toggle/>
+    </engine:VisualElement>
+
+    <engine:VisualElement name="vieTransition" class="inspect-other-element">
+      <engine:Label text ="English Text Transition"/>
+      <engine:TextField name ="engTransitionText"/>
+    </engine:VisualElement>
+    
+    <engine:VisualElement name="engTransition" class="inspect-other-element">
+      <engine:Label text ="Vienamese Text Transition"/>
+      <engine:TextField name ="vieTransitionText"/>
+    </engine:VisualElement>
+        
+
+  
+</engine:UXML>

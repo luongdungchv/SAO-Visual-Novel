@@ -1,0 +1,9 @@
+﻿#choiceManipulation{
+	flex-direction: row;
+	justify-content: center;
+	align-items: stretch;
+	
+}
+#choiceManipulation > Button {
+	width: 80px;
+}

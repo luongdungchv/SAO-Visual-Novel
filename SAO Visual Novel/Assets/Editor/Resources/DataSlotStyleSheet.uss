@@ -1,0 +1,13 @@
+﻿.dataslot-inspector{
+	flex-direction: row;
+	align-items: stretch;
+}
+.dataslot-inspector > Label{
+	flex: 30%;
+}
+.dataslot-inspector > TextField{
+	flex:70%;
+}
+.dataslot-inspector > ObjectField {
+	flex: 70%;
+}

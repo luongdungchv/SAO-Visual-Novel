@@ -1,0 +1,60 @@
+﻿.inspect-contentFold > .content{
+	flex-direction: row;
+}
+.inspect-contentFold > .content > .valueField{
+	margin-left: 30px;
+}
+.inspect-contentFold > .content > Label{
+	width: 110px;
+}
+.inspect-contentFold > .content > ToolbarMenu{
+	margin-left: 30px;
+}
+.inspect-contentFold > .content > #vietnameseField, #englishField{
+	height: 70px;
+	
+}
+.inspect-contentFold > .content > #vietnameseField TextInput, #englishField TextInput{
+	height: 70px;
+	width: 500px;
+	-unity-text-align: upper-left;	
+	white-space: normal;
+
+}
+.inspect-character{
+	flex-direction:row
+}
+.inspect-character > Image{
+	height:70px;
+	width:70px;
+	-unity-background-scale-mode: scale-to-fit;
+}
+.inspect-character > Button{
+	height:20px;
+	width:60px;
+}
+
+#char > *{
+	
+}
+#char > #nameSelector{
+	flex-direction: row;
+}
+#char > #nameSelector > Label{
+	padding-right: 70px;
+}
+#char > #nameSelector > ToolbarMenu {
+	flex:1;
+}
+.inspect-contentFold{
+	margin-left: 30px;
+}
+.inspect-other-element{
+	flex-direction: row;
+}
+.inspect-other-element > TextField TextInput{
+	width: 300px;
+	-unity-text-align: upper-left;
+	white-space:normal;
+}
+

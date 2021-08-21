@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<engine:UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:engine="UnityEngine.UIElements"
+    xmlns:editor="UnityEditor.UIElements"
+    xsi:noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd"
+>
+  <engine:Foldout name="container" class="inspect-contentFold">
+
+    <engine:Foldout name ="char" text="Charater">      
+      <engine:VisualElement name="nameSelector">
+        <engine:Label text="Name"/>
+        <editor:ToolbarMenu name="namesMenu"/>
+      </engine:VisualElement>
+
+      <engine:VisualElement name ="body" class="inspect-character">
+        <engine:Label text="Body Image"/>
+        <engine:Image name="bodyImage"/>
+        <engine:Button name ="selectBodyImage" text ="Select"/>
+      </engine:VisualElement>
+      
+      <engine:VisualElement name ="emotion" class="inspect-character">
+        <engine:Label text="Emotion Image"/>
+        <engine:Image name="emotionImage"/>
+        <engine:Button name ="selectEmotionImage" text ="Select"/>
+      </engine:VisualElement>      
+    </engine:Foldout>
+    
+    <engine:VisualElement class="content">
+      <engine:Label text="English Content"/>
+      <engine:TextField name="englishField" class ="valueField" multiline="true"></engine:TextField>
+    </engine:VisualElement>
+    
+    <engine:VisualElement class="content">
+      <engine:Label text="Vietnamese Content"/>
+      <engine:TextField name="vietnameseField" class ="valueField" multiline="true"></engine:TextField>
+    </engine:VisualElement>
+
+
+    <engine:VisualElement class="content">
+      <engine:Label text="Speaker"/>
+      <engine:TextField name="speakerField" class ="valueField"></engine:TextField>
+    </engine:VisualElement>
+
+    <engine:VisualElement class="content">
+      <engine:Label text="Render Pos"/>
+      <editor:ToolbarMenu name="renderPosMenu"></editor:ToolbarMenu>
+    </engine:VisualElement>
+    
+  </engine:Foldout>
+</engine:UXML>

@@ -1,0 +1,28 @@
+ManifestFileVersion: 0
+CRC: 369239475
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: a0f02044fcb0ce2f3ff095d6fd4a82f7
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 9392b46abb84f3d0642aaac165df07fd
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: df6e4b8b9382b4f4a9d7692cc33dd786, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 523e183eaaf9385469a985e1886f3124, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/ContentGroups/Chapter2/hoshi 1.psd
+- Assets/ContentGroups/Chapter2/Group2.asset
+- Assets/ContentGroups/Chapter2/hoshi2 1.psd
+- Assets/ContentGroups/Chapter2/chapter2IdManager.asset
+- Assets/ContentGroups/Chapter2/Group0.asset
+Dependencies: []
