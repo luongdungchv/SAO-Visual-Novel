@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbf31b1df4a774e47b042e4c695e572f, type: 3}
   m_Name: SLot0
   m_EditorClassIdentifier: 
-  group: {fileID: 0}
+  group: {fileID: 11400000, guid: dadd95c69a2699a4ca5bc91ea6ac917c, type: 2}
+  idManagerRef:
+    m_AssetGUID: 
+    m_SubObjectName: 
   idManager: {fileID: 11400000, guid: f4f0d818b2920e84594d2b97b23aafd2, type: 2}
   dataAddress: dataslot0
-  contentIndex: 0
-  saveDate: 
+  contentIndex: 1
+  saveDate: 4/26/2021 11:50:06 PM
   charImageList: []

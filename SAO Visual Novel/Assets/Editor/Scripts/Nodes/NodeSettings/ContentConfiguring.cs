@@ -5,6 +5,9 @@ using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 using System;
 using System.Linq;
+using UnityEngine.AddressableAssets;
+using UnityEditor.AddressableAssets.Settings;
+using UnityEditor.AddressableAssets;
 
 public class ContentConfiguring : EditorWindow
 {
@@ -287,15 +290,23 @@ public class ContentOption
         try
         {
             nameMenu.text = i.character.name;
-         
-            Sprite[] sprites = Resources.LoadAll<Sprite>($"CharacterSprites/{nameMenu.text}");
-            Debug.Log(sprites.Length);
+
+            var aaSetting = AddressableAssetSettingsDefaultObject.Settings;
+           
+            Addressables.LoadAssetsAsync<Sprite>("sprite", null).Completed += obj =>
+            {
+                
+            };
+             
+            Debug.Log("gg");
+            var sprites = AddressablesEditor.LoadAllAsset<GameObject>($"CharacterSprites/{nameMenu.text}.psb");
+            Debug.Log(sprites[0]);
 
             bodyIndex = i.character.bodyIndex;
             emotionIndex = i.character.emotionIndex;
 
-            bodyImage.image = parent.GetTexture(sprites[bodyIndex]);
-            emotionImage.image = parent.GetTexture(sprites[emotionIndex]);
+            bodyImage.image = parent.GetTexture(sprites[bodyIndex].GetComponent<SpriteRenderer>().sprite);
+            emotionImage.image = parent.GetTexture(sprites[emotionIndex].GetComponent<SpriteRenderer>().sprite);
 
             bodyImage.scaleMode = ScaleMode.ScaleToFit;
             emotionImage.scaleMode = ScaleMode.ScaleToFit;
@@ -310,20 +321,23 @@ public class ContentOption
         {
             parent.OpenSpriteWindow(this, "emotion", nameMenu.text);
         };
-        GameObject[] spriteList = Resources.LoadAll<GameObject>("CharacterPrefabs");
-        foreach (var n in spriteList)
+        Addressables.LoadAssetsAsync<GameObject>("prefab", null).Completed += obj =>
         {
-            nameMenu.menu.AppendAction(n.name, new Action<DropdownMenuAction>(v =>
+            var spriteList = obj.Result as List<GameObject>;
+            foreach (var n in spriteList)
             {
-                nameMenu.text = n.name;
+                nameMenu.menu.AppendAction(n.name, new Action<DropdownMenuAction>(v =>
+                {
+                    nameMenu.text = n.name;
 
-                bodyImage.image = Texture2D.whiteTexture;
-                emotionImage.image = Texture2D.whiteTexture;
+                    bodyImage.image = Texture2D.whiteTexture;
+                    emotionImage.image = Texture2D.whiteTexture;
 
-                bodyIndex = 0;
-                emotionIndex = 0;
-            }));
-        }
+                    bodyIndex = 0;
+                    emotionIndex = 0;
+                }));
+            }
+        };
         elementContainer.text = $"Content {index}";
 
         englishField.SetValueWithoutNotify(i.englishContent);

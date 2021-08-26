@@ -12,10 +12,7 @@ public class GroupManagerWindow : EditorWindow
 {
     Button deleteBtn;
     string selectedGroup;
-    public void SetupTest()
-    {
-        
-    }
+   
     public void Setup()
     {
         deleteBtn = new Button() {text = "Delete" };
@@ -27,6 +24,7 @@ public class GroupManagerWindow : EditorWindow
         };
         deleteBtn.SetEnabled(false);
         rootVisualElement.Insert(0, deleteBtn);
+        
         GenerateListView();      
     }
 
@@ -54,4 +52,6 @@ public class GroupManagerWindow : EditorWindow
 
         rootVisualElement.Add(listView);
     }
+    
+   
 }

@@ -17,7 +17,6 @@ public class BaseNode : Node
 
     public BaseNode()
     {
-        //styleSheets.Add(Resources.Load<StyleSheet>("NodeStyleSheet"));
         outputPortList = new List<Port>();
         inputPortList = new List<Port>();
     }

@@ -8,61 +8,49 @@ using System;
 public class ContentManager : MonoBehaviour
 {
     public static ContentManager ins;
-    public static event EventHandler OnNewChapterLoaded;
-
-    public SpriteRenderer fadePanel;
-    public SpriteRenderer background;
-    public SpriteRenderer speechBackground;
-
-    public Transform selectionBtnContainer;
-    public List<SpriteRenderer> charImagePositions;
-    public List<Sprite> currentCharImages;
-    public ContentGroup group;
 
     public DataSlot slot;
+    public List<Sprite> currentCharImages;
 
     [HideInInspector]
     public List<GameObject> buttonList;
-    public Queue<Content> contentQueue;
-
-    public TextMeshPro contentText;
-    public TextMeshPro speakerText;
-    public TextMeshPro animationText;
-
     [HideInInspector]
     public bool isWriting;
-    public bool isAutoPlay;
 
+    [SerializeField] private SpriteRenderer fadePanel;
+    [SerializeField] private SpriteRenderer background;
+    [SerializeField] private SpriteRenderer speechBackground;
+
+    [SerializeField] private Transform selectionBtnContainer;
+
+    [SerializeField] private TextMeshPro contentText;
+    [SerializeField] private TextMeshPro speakerText;
+    [SerializeField] private TextMeshPro animationText;
+
+    [SerializeField] private Button nextButton;
+    [SerializeField] private Button selectionButtonPrefab;
+
+    private ContentGroup group;
+    private Queue<Content> contentQueue;
     private Content currentContent;
-    public int currentIndex;
-
-    public Button nextButton;
-    public Button selectionButtonPrefab;
-
-    public ObjectIdManager idManager;
 
     private Coroutine writeRoutine;
 
     private void Start()
     {
-        LanguageManager.OnLanguageChange += (s, e) => {
+        LanguageSetting.OnLanguageChange += (s, e) => {
             RenderContent(currentContent);
-            if (SettingManager.isAutoPlay) StartCoroutine(PlayNext());
+            if (SettingManager.settingData.isAutoPlay) StartCoroutine(PlayNext());
         };
 
         ins = this;
 
         nextButton.onClick.AddListener(PlayContent);
-        
+        Debug.Log($"{group.nextGroup} {group}");
         TransitionManager.Fade("in", fadePanel, () => 
         {
              PlayContent();           
         });
-    }
-
-    private void Update()
-    {
-       
     }
 
     Coroutine playCoroutine;
@@ -70,34 +58,42 @@ public class ContentManager : MonoBehaviour
     {
         fadePanel.color = new Color(0, 0, 0, 0);
         if(playCoroutine != null) StopCoroutine(playCoroutine);
+        
         if (contentQueue.Count >= 0)
-        {           
+        {
+            
+            //Debug.Log(group.nextGroup);
             if (isWriting)
             {
                 isWriting = false;
                 StopCoroutine(writeRoutine);
                 currentContent.DisplayText(contentText);
             }
-            else if (!isWriting && contentQueue.Count > 0)                       
-                RenderContent(contentQueue.Dequeue());  
-            
+            else if (!isWriting && contentQueue.Count > 0)
+            {
+                RenderContent(contentQueue.Dequeue());
+            }
+
             else if (!isWriting && contentQueue.Count == 0)
             {
+                
                 if (group.HasSelection())
-                {                   
+                {
                     RenderSelection(group.selection);
                     return;
                 }
                 if (group.nextGroup != null)
                 {
-                    group.nextGroup.PlayTransitionEffect(fadePanel, animationText,() => ReloadScene(group.nextGroup), () => { 
+                    Debug.Log("g");
+                    group.nextGroup.PlayTransitionEffect(fadePanel, animationText, () => ReloadScene(group.nextGroup), () =>
+                    {
                         ReloadScene(group);
                         PlayContent();
                     });
                 }
             }
         }
-        if (SettingManager.isAutoPlay)
+        if (SettingManager.settingData.isAutoPlay)
         {           
             playCoroutine = StartCoroutine(PlayNext());
         }
@@ -155,6 +151,7 @@ public class ContentManager : MonoBehaviour
     }
     public void GenerateContentQueue(int startIndex)
     {
+        Debug.Log(startIndex);
         contentQueue = new Queue<Content>();
         List<Content> contents = group.contents;
         for (int i = startIndex; i < contents.Count; i++)
@@ -166,14 +163,14 @@ public class ContentManager : MonoBehaviour
     }
     public void LoadNewGroup(ContentGroup newGroup, int startIndex)
     {
-        charImagePositions.ForEach(n =>
-        {
-            n.color = new Color(0, 0, 0, 0);
-            n.transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
-        });
+        
         group = newGroup;
         GenerateContentQueue(startIndex);     
         background.sprite = group.background;
+    }
+    public ContentGroup GetCurrentGroup()
+    {
+        return group;
     }
     void ReloadScene(ContentGroup group)
     {

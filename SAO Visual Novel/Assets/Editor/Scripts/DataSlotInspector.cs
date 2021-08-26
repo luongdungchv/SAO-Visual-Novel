@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEngine.UIElements;
 using UnityEditor.UIElements;
 using System.Linq;
+using UnityEngine.AddressableAssets;
 
 [CustomEditor(typeof(DataSlot)), CanEditMultipleObjects]
 public class DataSlotInspector : Editor
@@ -58,6 +59,8 @@ public class DataSlotInspector : Editor
         Button saveBtn = new Button();
         saveBtn.clicked += () =>
         {
+            Debug.Log(slot);
+            
             Data2 saveData = new Data2()
             {
                 groupId = (idManagerField.value as ObjectIdManager).groupList.IndexOf((newGroupField.value as ContentGroup)),
@@ -65,8 +68,10 @@ public class DataSlotInspector : Editor
                 saveDate = "",
                 imageData = new List<Character> { null, null, null}
             };
+            
             string json = JsonUtility.ToJson(saveData);
             slot.SaveJsonData(json);
+            Debug.Log(PlayerPrefs.GetString("dataslot3"));
             Data2 loadData = JsonUtility.FromJson<Data2>(slot.GetJsonData());
             try { slot.GetData(loadData); } catch { };
            
@@ -110,7 +115,9 @@ public class DataSlotInspector : Editor
 
         groupField.objectType = typeof(ContentGroup);
         groupField.SetEnabled(false);
+
         idManagerField.objectType = typeof(ObjectIdManager);
+        idManagerField.bindingPath = "idManager";
 
         contentIndexField.SetEnabled(false);
         saveDateField.SetEnabled(false);

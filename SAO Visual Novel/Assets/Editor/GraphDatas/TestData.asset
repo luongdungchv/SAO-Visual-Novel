@@ -41,11 +41,6 @@ MonoBehaviour:
     group: {fileID: 11400000, guid: 3daaa0df04570684cba68fe337582962, type: 2}
     choiceCount: 0
     hasChoice: 0
-  - nodeGuid: 6a8aa012-6e0c-4e07-8f7b-d7db99b375b6
-    position: {x: 659.2, y: 84}
-    group: {fileID: 11400000, guid: a155ea20f2210d8408116ef5ab7146cd, type: 2}
-    choiceCount: 0
-    hasChoice: 0
   - nodeGuid: ea96fa95-316b-4e20-b7d2-aedd349ceb37
     position: {x: 905.60004, y: 129.6}
     group: {fileID: 11400000, guid: 8f26357c8d82f214bbbbe5ed61ae64c1, type: 2}
@@ -64,6 +59,11 @@ MonoBehaviour:
   - nodeGuid: fde25b74-2518-45ba-99e6-af725b8819f0
     position: {x: 1461.6, y: 194.40001}
     group: {fileID: 11400000, guid: 0462d277b229cab489a619aad7c7fd1b, type: 2}
+    choiceCount: 0
+    hasChoice: 0
+  - nodeGuid: 6a8aa012-6e0c-4e07-8f7b-d7db99b375b6
+    position: {x: 677.60004, y: 178.40001}
+    group: {fileID: 11400000, guid: a155ea20f2210d8408116ef5ab7146cd, type: 2}
     choiceCount: 0
     hasChoice: 0
   nodeEdgeDatas:
@@ -93,4 +93,7 @@ MonoBehaviour:
     startPortIndex: 1
   - startNodeGuid: 169b283c-944e-4d52-8ed6-877ab53d2d54
     endNodeGuid: f8bff755-6b2b-4832-88a2-d7e768b99d09
+    startPortIndex: 0
+  - startNodeGuid: 00e4aa94-b9a4-4c85-8eec-a149dcbca518
+    endNodeGuid: 6a8aa012-6e0c-4e07-8f7b-d7db99b375b6
     startPortIndex: 0

@@ -1,17 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public class AnimationPlayer : MonoBehaviour
 {
     public static AnimationPlayer ins;
 
-    public List<SpriteRenderer> renderPositions;
     public List<CharacterImageRenderer> originalRenderers;
-    public GameObject imagePrefab;
-
-    public Animation test;
-    public GameObject test2;
+    [SerializeField] private List<SpriteRenderer> renderPositions;
 
     private void Start()
     {
@@ -36,36 +33,40 @@ public class AnimationPlayer : MonoBehaviour
         current.GetComponent<Animation>().Play();
     }
     public void Animate2(Character c, int posIndex)
-    {           
-        var prefab = Resources.Load<CharacterImageRenderer>($"CharacterPrefabs/{c.name}");
-        var newImage = Instantiate(prefab, originalRenderers[posIndex].transform.position, Quaternion.identity);
-        newImage.character.name = c.name;
-        newImage.character.bodyIndex = c.bodyIndex;
-        newImage.character.emotionIndex = c.emotionIndex;
+    {
+        Debug.Log(c.name);
+        Addressables.LoadAssetAsync<GameObject>($"CharacterPrefabs/{c.name}.prefab").Completed += obj =>
+        {
+            var prefab = obj.Result.GetComponent<CharacterImageRenderer>();
+            var newImage = Instantiate(prefab, originalRenderers[posIndex].transform.position, Quaternion.identity);
+            newImage.character.name = c.name;
+            newImage.character.bodyIndex = c.bodyIndex;
+            newImage.character.emotionIndex = c.emotionIndex;
 
-        int transparentCount = 0;
-        for (int i = 0; i < 3; i++)
-        {
-            var part = originalRenderers[posIndex].transform.GetChild(i).GetComponent<SpriteRenderer>();
-            part.sortingLayerName = "first";
-            if (part.color.a == 0) transparentCount++;
-        }
-        for (int i = 0; i < newImage.transform.childCount; i++)
-        {
-            var part = newImage.transform.GetChild(i).gameObject;
-            part.GetComponent<SpriteRenderer>().sortingLayerName = "second";
-            if (i == c.bodyIndex || i == c.emotionIndex || part.name == "hairline") continue;
-            Destroy(part);
-        }
-        //var currentPart = originalRenderers[index].transform.GetChild(i).GetComponent<SpriteRenderer>()
-        if(transparentCount == 3)
-        {
-            Destroy(originalRenderers[posIndex].gameObject);
-            originalRenderers[posIndex] = newImage;
-            ContentManager.ins.slot.Save();
-            return;
-        }
-        FadeImage(posIndex, .15f, newImage);
+            int transparentCount = 0;
+            for (int i = 0; i < 3; i++)
+            {
+                var part = originalRenderers[posIndex].transform.GetChild(i).GetComponent<SpriteRenderer>();
+                part.sortingLayerName = "first";
+                if (part.color.a == 0) transparentCount++;
+            }
+            for (int i = 0; i < newImage.transform.childCount; i++)
+            {
+                var part = newImage.transform.GetChild(i).gameObject;
+                part.GetComponent<SpriteRenderer>().sortingLayerName = "second";
+                if (i == c.bodyIndex || i == c.emotionIndex || part.name == "hairline") continue;
+                Destroy(part);
+            }
+            //var currentPart = originalRenderers[index].transform.GetChild(i).GetComponent<SpriteRenderer>()
+            if (transparentCount == 3)
+            {
+                Destroy(originalRenderers[posIndex].gameObject);
+                originalRenderers[posIndex] = newImage;
+                ContentManager.ins.slot.Save();
+                return;
+            }
+            FadeImage(posIndex, .15f, newImage);
+        };
     }
     
     void FadeImage(int pos, float time, CharacterImageRenderer newImage)

@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbf31b1df4a774e47b042e4c695e572f, type: 3}
   m_Name: SLot0_3
   m_EditorClassIdentifier: 
-  group: {fileID: 11400000, guid: dadd95c69a2699a4ca5bc91ea6ac917c, type: 2}
+  group: {fileID: 11400000, guid: 19f52f1b2c83e634398f661ad6359aa8, type: 2}
+  idManagerRef:
+    m_AssetGUID: 
+    m_SubObjectName: 
   idManager: {fileID: 11400000, guid: f4f0d818b2920e84594d2b97b23aafd2, type: 2}
   dataAddress: dataslot3
-  contentIndex: 0
+  contentIndex: 2
   saveDate: 
   charImageList:
   - {fileID: 0}

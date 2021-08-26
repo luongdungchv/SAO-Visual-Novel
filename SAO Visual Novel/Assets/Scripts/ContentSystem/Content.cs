@@ -29,8 +29,8 @@ public class Content
     public void DisplayText(TextMeshPro tmp)
     {
         string currentContent = "";
-        if (SettingManager.currentLanguage == 0) currentContent = englishContent;
-        else if (SettingManager.currentLanguage == 1) currentContent = vietnameseContent;
+        if (SettingManager.settingData.currentLanguage == 0) currentContent = englishContent;
+        else if (SettingManager.settingData.currentLanguage == 1) currentContent = vietnameseContent;
 
         tmp.text = currentContent;
     }
@@ -51,7 +51,7 @@ public class Content
     }
     public void SetText()
     {
-        if (SettingManager.currentLanguage == 0) currentContent = englishContent;
-        else if (SettingManager.currentLanguage == 1) currentContent = vietnameseContent;
+        if (SettingManager.settingData.currentLanguage == 0) currentContent = englishContent;
+        else if (SettingManager.settingData.currentLanguage == 1) currentContent = vietnameseContent;
     }
 }

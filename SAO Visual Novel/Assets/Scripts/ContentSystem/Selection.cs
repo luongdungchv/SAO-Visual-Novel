@@ -25,8 +25,8 @@ public class Selection
     public IEnumerator AnimateQuestionEnum(TextMeshPro contentText, Action complete)
     {
         string currentQuestion = "";
-        if (SettingManager.currentLanguage == 0) currentQuestion = engQuestion;
-        else if (SettingManager.currentLanguage == 1) currentQuestion = vieQuestion;
+        if (SettingManager.settingData.currentLanguage == 0) currentQuestion = engQuestion;
+        else if (SettingManager.settingData.currentLanguage == 1) currentQuestion = vieQuestion;
         int index = 0;
         ContentManager.ins.isWriting = true;
         while(index < currentQuestion.Length)

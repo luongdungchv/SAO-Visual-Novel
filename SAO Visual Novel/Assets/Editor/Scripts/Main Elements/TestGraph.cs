@@ -6,6 +6,9 @@ using UnityEngine.UIElements;
 using UnityEditor.UIElements;
 using System.Linq;
 using System;
+using UnityEditor.AddressableAssets;
+using UnityEditor.AddressableAssets.Settings;
+using UnityEditor;
 
 public class TestGraph : GraphView
 {
@@ -18,12 +21,12 @@ public class TestGraph : GraphView
     public TestGraph(TestEditorWindow input)
     {
         window = input;
-
+        
         styleSheets.Add(Resources.Load<StyleSheet>(styleSheetName));
 
         SetupZoom(ContentZoomer.DefaultMinScale, ContentZoomer.DefaultMaxScale);
         this.AddManipulator(new ContentDragger());
-        this.AddManipulator(new SelectionDragger());
+        this.AddManipulator(new SelectionDragger()); 
         this.AddManipulator(new RectangleSelector());
         this.AddManipulator(new FreehandSelector());
         
@@ -114,7 +117,7 @@ public class TestGraph : GraphView
             clonedEdgeList.ForEach(n => AddToSelection(n));
             Debug.Log(selection[0]);
         };
-        
+        TestAddressable();
     }
 
     public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter)
@@ -158,11 +161,18 @@ public class TestGraph : GraphView
         var res = new SubgraphNode(pos, window, this);
         return res;
     }
-    
+    void TestAddressable()
+    {
+        //var t = AddressablesEditor.LoadAllAsset<ContentGroup>("Groups");
+        //t.ForEach(n => Debug.Log(n)); 
+        //var t = AssetDatabase.LoadAllAssetsAtPath("Assets/Resourcesw/CharacterSprites/hoshi2 1.psb").Where(n => n is GameObject).Cast<GameObject>().ToList();
+        //foreach (var i in t) Debug.Log(i);
+    }
+     
 }
-public class CopiedData
+public class CopiedData 
 {
-    public List<BaseNodeData> nodeDatas;
+    public List<BaseNodeData> nodeDatas; 
     public List<NodeEdgeData> edgeDatas;
     public CopiedData()
     {

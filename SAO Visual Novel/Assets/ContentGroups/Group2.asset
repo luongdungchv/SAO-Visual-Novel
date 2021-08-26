@@ -26,7 +26,7 @@ MonoBehaviour:
     vietnameseContent: sdffffffffffffasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf
     manager: {fileID: 0}
     contentText: {fileID: 0}
-    currentContent: 
+    currentContent: asdfasdfasdfasdfasdfasdfasdfasdfdsfasdfasdfasdffsa
     speaker: Person 2
     renderPos: 2
   - image: {fileID: 0}
@@ -38,7 +38,7 @@ MonoBehaviour:
     vietnameseContent: sdffffffffffffasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf
     manager: {fileID: 0}
     contentText: {fileID: 0}
-    currentContent: 
+    currentContent: asdfasdfasdfasdfasdfasdfasdfasdfdsfasdfasdfasdffsa
     speaker: Person 2
     renderPos: 2
   - image: {fileID: 0}
@@ -50,11 +50,11 @@ MonoBehaviour:
     vietnameseContent: sdffffffffffffasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf
     manager: {fileID: 0}
     contentText: {fileID: 0}
-    currentContent: 
+    currentContent: asdfasdfasdfasdfasdfasdfasdfasdfdsfasdfasdfasdffsa
     speaker: Person 1
     renderPos: 0
   background: {fileID: 21300000, guid: 76c4ff531f7c4a64188630615389d061, type: 3}
-  nextGroup: {fileID: 0}
+  nextGroup: {fileID: 11400000, guid: a155ea20f2210d8408116ef5ab7146cd, type: 2}
   vieTransitionText: "\u0110ang chuy\u1EC3n c\u1EA3nh"
   engTransitionText: Transitioning
   nextChapter: 

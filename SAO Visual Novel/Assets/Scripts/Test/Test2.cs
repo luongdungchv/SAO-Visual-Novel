@@ -28,7 +28,6 @@ public class Test2 : MonoBehaviour
         //string json = JsonUtility.ToJson(data);
         //PlayerPrefs.SetString("dataslot3", json);
         //Debug.Log(json);
-        Sprite[] sprites = Resources.LoadAll<Sprite>("CharacterSprites/hoshi2 1");
 
         Sprite testsprite = sp;
         Texture2D btnImage = new Texture2D((int)testsprite.rect.width, (int)testsprite.rect.height);

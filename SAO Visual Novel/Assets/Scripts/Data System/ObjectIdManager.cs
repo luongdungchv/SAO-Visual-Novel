@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 [CreateAssetMenu(fileName = "New Manager", menuName = "Id Manager")]
 public class ObjectIdManager : ScriptableObject
 {

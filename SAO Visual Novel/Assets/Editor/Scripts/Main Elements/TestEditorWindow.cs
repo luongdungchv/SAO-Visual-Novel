@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 using UnityEditor.Callbacks;
+using System;
 
 public class TestEditorWindow : EditorWindow
 {
@@ -49,9 +50,9 @@ public class TestEditorWindow : EditorWindow
                 container = AssetDatabase.LoadAssetAtPath(PlayerPrefs.GetString("Asset path"), typeof(GraphDataContainer)) as GraphDataContainer;
                 Setup();
             }
-            catch
+            catch(Exception e)
             {
-                Debug.Log("No saved data path");
+                Debug.Log("No saved data path " + e.ToString());
             }
         }
     }

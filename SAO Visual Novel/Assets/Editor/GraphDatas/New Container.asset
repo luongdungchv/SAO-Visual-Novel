@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entryNodeData:
     nodeGuid: b70ed30d-df4f-44a5-8d38-7d30acabf264
-    position: {x: -158.40001, y: -105.600006}
+    position: {x: 62.4, y: -57.600002}
     firstNodeGuid: ea9faea1-3e0b-4690-8cce-22657dd7fc3f
   subgraphNodeDatas:
   - nodeGuid: a894a6cd-9b3b-48a1-9434-d4d8fd3f8dab

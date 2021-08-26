@@ -22,13 +22,9 @@ public class ContentGroup : ScriptableObject
     public Color transitionColor;
     private void OnEnable()
     { 
-        //contents = new List<Content>();
     }
     public bool HasTransition()
     {
-        //bool res = nextGroup == null && !hasTrasition;
-        //return !res;
-
         if (nextGroup == null) return false;
         if (hasTrasition) return true;
         return false;
@@ -36,8 +32,7 @@ public class ContentGroup : ScriptableObject
 
     public bool HasSelection()
     {
-        //bool res = selection.SelectionCount() == 0 || selection == null;
-        //return !res;
+       
         if (selection == null) return false;
         if (selection.SelectionCount() == 0) return false;
         return true;
@@ -47,8 +42,8 @@ public class ContentGroup : ScriptableObject
         if (vieTransitionText != "" && engTransitionText != "")
         {
             string currentTransitionText = "";
-            if (SettingManager.currentLanguage == 0) currentTransitionText = engTransitionText;
-            else if (SettingManager.currentLanguage == 1) currentTransitionText = vieTransitionText;
+            if (SettingManager.settingData.currentLanguage == 0) currentTransitionText = engTransitionText;
+            else if (SettingManager.settingData.currentLanguage == 1) currentTransitionText = vieTransitionText;
             text.text = currentTransitionText;
             TransitionManager.TransitionWithText(img, text, currentTransitionText, complete);
             return;
@@ -68,8 +63,8 @@ public class ContentGroup : ScriptableObject
         if (vieTransitionText != "" && engTransitionText != "")
         {
             string currentTransitionText = "";
-            if (SettingManager.currentLanguage == 0) currentTransitionText = engTransitionText;
-            else if (SettingManager.currentLanguage == 1) currentTransitionText = vieTransitionText;
+            if (SettingManager.settingData.currentLanguage == 0) currentTransitionText = engTransitionText;
+            else if (SettingManager.settingData.currentLanguage == 1) currentTransitionText = vieTransitionText;
             text.text = currentTransitionText;
             TransitionManager.TransitionWithText(img, text, currentTransitionText,halfComplete, complete);
             return;

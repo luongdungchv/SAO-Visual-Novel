@@ -49,8 +49,7 @@ public class DataLoader : MonoBehaviour
             return;
         }
         TransitionManager.FadeTransition("out", img, Color.black, () =>
-        {
-            
+        {          
             slot.Load();
         });
 

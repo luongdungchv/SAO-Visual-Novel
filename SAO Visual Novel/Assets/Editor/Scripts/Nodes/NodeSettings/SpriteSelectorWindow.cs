@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.UIElements;
 using UnityEditor.UIElements;
+using UnityEngine.AddressableAssets;
+using System.Linq;
 
 public class SpriteSelectorWindow : EditorWindow
 {
@@ -16,9 +18,14 @@ public class SpriteSelectorWindow : EditorWindow
     }
     public void Setup(string name)
     {
-        Sprite[] sprites = Resources.LoadAll<Sprite>($"CharacterSprites/{name}");
-        Debug.Log(sprites.Length);
-        for(int n = 0; n < sprites.Length; n++)
+        //Sprite[] sprites = Resources.LoadAll<Sprite>($"CharacterSprites/{name}");
+        Addressables.LoadAssetsAsync<Sprite>("group", null).Completed += obj =>
+        {
+            
+        };
+        var sprites = AddressablesEditor.LoadAllAsset<GameObject>($"CharacterSprites/{name}.psb").Select(n => n.GetComponent<SpriteRenderer>().sprite).ToList();
+        Debug.Log(sprites.Count);
+        for (int n = 0; n < sprites.Count; n++)
         {
             var i = sprites[n];
             Texture2D btnImage = new Texture2D((int)i.rect.width, (int)i.rect.height);
@@ -28,9 +35,10 @@ public class SpriteSelectorWindow : EditorWindow
                                                 (int)Mathf.Round(i.rect.height));
             btnImage.SetPixels(pixels);
             btnImage.Apply();
-            
+
             rootVisualElement.Add(CreateButton(btnImage, n));
         }
+
     }
     public Button CreateButton(Texture2D backgroundImage, int spriteIndex)
     {

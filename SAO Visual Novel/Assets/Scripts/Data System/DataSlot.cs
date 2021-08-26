@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
-[CreateAssetMenu(fileName = "New SLot", menuName = "Data SLot")]
+using UnityEngine.AddressableAssets;
+
+[CreateAssetMenu(fileName = "New Data SLot", menuName = "Data SLot")]
 [Serializable]
 public class DataSlot : ScriptableObject
 {
     public ContentGroup group;
+
+    public AssetReference idManagerRef;
     public ObjectIdManager idManager;
 
     public string dataAddress;
@@ -20,7 +24,12 @@ public class DataSlot : ScriptableObject
 
     public static event EventHandler OnDataChecked;
 
-    private void OnEnable()
+    public void OnEnable()
+    {
+        if (idManager == null) return;
+        Setup();    
+    }
+    public void Setup()
     {
         try
         {
@@ -43,54 +52,33 @@ public class DataSlot : ScriptableObject
             };
             GetData(data);
         }
-       
-    }
+    }    
 
     public bool HasData()
     {
         bool hasData = group == null || group.contents.Count == 0;
+        
         return !hasData;
     }
     public void Save()
     {
-        //ContentManager manager = ContentManager.ins;
-        //group = manager.group;
-        //charImageList.Clear();
-
-        //manager.currentCharImages.ForEach(n =>
-        //{
-        //    charImageList.Add(n);
-        //});
-
-        //Data saveData = new Data();
-        //saveData.groupId = idManager.groupList.IndexOf(manager.group);
-        //Debug.Log(manager.group);
-        //saveData.contentIndex = manager.GetCurrentIndex();
-        //saveData.saveDate = DateTime.Now.ToString();
-        //saveData.imageIdList = new List<int>();
-        //foreach (var n in manager.currentCharImages)
-        //{
-        //    saveData.imageIdList.Add(idManager.spriteList.IndexOf(n));
-        //}
-        //SaveJsonData(JsonUtility.ToJson(saveData));
-        //GetData(saveData);
-
         var manager = ContentManager.ins;
-        group = manager.group;
-        Data2 saveData = new Data2();
-        saveData.groupId = idManager.groupList.IndexOf(manager.group);
-        saveData.contentIndex = manager.GetCurrentIndex();
-        saveData.saveDate = DateTime.Now.ToString();
-        saveData.imageData = new List<Character>();
+        group = manager.GetCurrentGroup();
+        Data2 saveData = new Data2()
+        {
+            groupId = idManager.groupList.IndexOf(manager.GetCurrentGroup()),
+            contentIndex = manager.GetCurrentIndex(),
+            saveDate = DateTime.Now.ToString(),
+            imageData = new List<Character>()
+        };
+        
         foreach (var i in AnimationPlayer.ins.originalRenderers)
         {
             if (i.character == null) { saveData.imageData.Add(null); continue; }
             saveData.imageData.Add(i.character);
         }
-        Debug.Log(saveData.imageData.Count);
         string json = JsonUtility.ToJson(saveData);
-        Debug.Log(AnimationPlayer.ins.originalRenderers[0]);
-        PlayerPrefs.SetString(dataAddress, json);
+        SaveJsonData(json);
     }
     public void Load()
     {
@@ -118,7 +106,12 @@ public class DataSlot : ScriptableObject
             AnimationPlayer animPlayer = GameObject.Find("AnimationPlayer").GetComponent<AnimationPlayer>();
             for (int i = 0; i < animPlayer.originalRenderers.Count; i++)
             {
-                try { if (savedImageData[i] != null) animPlayer.Animate2(savedImageData[i], i); } catch { }
+                try 
+                { 
+                    if (savedImageData[i] != null && savedImageData[i].name != "") 
+                        animPlayer.Animate2(savedImageData[i], i); 
+                } 
+                catch { }
             }
 
         };
@@ -128,36 +121,13 @@ public class DataSlot : ScriptableObject
     {
         PlayerPrefs.SetString(dataAddress, value);
     }
-    public void GetData(Data data)
-    {
-        group = idManager.groupList[data.groupId];
-        contentIndex = data.contentIndex;
-        saveDate = data.saveDate;
-        charImageList.Clear();
-        
-        foreach (var i in data.imageIdList)
-        {
-            if (i < 0)
-            {
-                charImageList.Add(null);
-                continue;
-            }
-            charImageList.Add(idManager.spriteList[i]);
-
-        }
-    }
+   
     public void GetData(Data2 data)
     {
         group = idManager.groupList[data.groupId];
         contentIndex = data.contentIndex;
         saveDate = data.saveDate;
         savedImageData = new List<Character>(data.imageData);
-
-        //group = idManager.groupList[0];
-        //contentIndex = 0;
-        //saveDate = "";
-        //savedImageData.Clear();
-        //savedImageData = new List<Character>();
     }
     public string GetJsonData()
     {

@@ -4308,7 +4308,6 @@ MonoBehaviour:
   animationText: {fileID: 1563288624}
   isWriting: 0
   isAutoPlay: 0
-  currentIndex: 0
   nextButton: {fileID: 788200968}
   selectionButtonPrefab: {fileID: 8440235961806741925, guid: 6ac6672b2c5f720479c21d6845d52012, type: 3}
   idManager: {fileID: 0}
@@ -6763,6 +6762,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoPlayToggle: {fileID: 1845948358}
+  settingList: []
 --- !u!4 &1620891980
 Transform:
   m_ObjectHideFlags: 0
@@ -6806,8 +6806,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd029c75ca006b74f95e2ad250265fcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  english: {fileID: 0}
-  vietnamese: {fileID: 0}
+  group: {fileID: 11400000, guid: 19f52f1b2c83e634398f661ad6359aa8, type: 2}
   dropDown: {fileID: 2001690945}
   languageManager: {fileID: 0}
 --- !u!4 &1656881640

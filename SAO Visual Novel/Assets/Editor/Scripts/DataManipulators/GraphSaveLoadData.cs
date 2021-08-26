@@ -60,6 +60,8 @@ public class GraphSaveLoadData
 
             ContentNode node = n as ContentNode;
             if (node.group == null) continue;
+            EditorUtility.SetDirty(node.group);
+
             List<SelectionButton> tmpChoiceList = new List<SelectionButton>();
             for (int i = 0; i < n.outputPortList.Count; i++)
             {
@@ -100,6 +102,7 @@ public class GraphSaveLoadData
             }
             node.group.selection.selections.Clear();
             if (node.hasChoice) node.group.selection.selections = tmpChoiceList.Where(j => j != null).ToList();
+            AssetDatabase.SaveAssets();
         }
     }
     

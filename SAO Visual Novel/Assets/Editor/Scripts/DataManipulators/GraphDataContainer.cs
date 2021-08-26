@@ -6,7 +6,7 @@ using UnityEditor.Experimental.GraphView;
 using System.Linq;
 using UnityEditor;
 
-[CreateAssetMenu(fileName = "New Container", menuName = "New Container")]
+[CreateAssetMenu(fileName = "New Graph", menuName = "New Graph")]
 public class GraphDataContainer : ScriptableObject
 {
     public EntryNodeData entryNodeData;
