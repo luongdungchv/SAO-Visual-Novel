@@ -54,7 +54,6 @@ public class Test2 : MonoBehaviour
             c.name = "hoshi2 1";
             c.bodyIndex = 4;
             c.emotionIndex = 0;
-            animPlayer.Animate2(c, 0);
             //animPlayer.Animate3();
         }
     }

@@ -22,12 +22,12 @@ MonoBehaviour:
     data: {fileID: 11400000, guid: e9ee74e72289a5c49b539b68faaf85c2, type: 2}
   nodeDatas:
   - nodeGuid: d68b3d0c-5d44-4b3b-ae65-9b0a52b88aeb
-    position: {x: 408.80002, y: 113.600006}
+    position: {x: 408.8, y: 113.59999}
     group: {fileID: 11400000, guid: d9677dc89f263164c80b7e4685f35a33, type: 2}
     choiceCount: 0
     hasChoice: 0
   - nodeGuid: 00e4aa94-b9a4-4c85-8eec-a149dcbca518
-    position: {x: 420.80002, y: 280.8}
+    position: {x: 420.8, y: 280.80002}
     group: {fileID: 11400000, guid: 19f52f1b2c83e634398f661ad6359aa8, type: 2}
     choiceCount: 0
     hasChoice: 0
@@ -37,33 +37,38 @@ MonoBehaviour:
     choiceCount: 3
     hasChoice: 1
   - nodeGuid: 617274ca-5c9f-4a5c-8c33-b9f211559527
-    position: {x: 424, y: 455.19998}
+    position: {x: 424, y: 455.2}
     group: {fileID: 11400000, guid: 3daaa0df04570684cba68fe337582962, type: 2}
     choiceCount: 0
     hasChoice: 0
   - nodeGuid: ea96fa95-316b-4e20-b7d2-aedd349ceb37
-    position: {x: 905.60004, y: 129.6}
+    position: {x: 905.6, y: 129.59999}
     group: {fileID: 11400000, guid: 8f26357c8d82f214bbbbe5ed61ae64c1, type: 2}
     choiceCount: 0
     hasChoice: 0
   - nodeGuid: 7f858f9e-73ed-4fbe-9255-d5dda950683d
-    position: {x: 1180, y: 182.40001}
+    position: {x: 1180, y: 182.4}
     group: {fileID: 11400000, guid: 036edaf46d6949a48abc400d32a65cb0, type: 2}
     choiceCount: 2
     hasChoice: 1
   - nodeGuid: 169b283c-944e-4d52-8ed6-877ab53d2d54
-    position: {x: 1456.7999, y: 11.199999}
+    position: {x: 1456.8, y: 11.200001}
     group: {fileID: 11400000, guid: 4bb89516f3fb38341bd8bb7f853865b1, type: 2}
     choiceCount: 0
     hasChoice: 0
   - nodeGuid: fde25b74-2518-45ba-99e6-af725b8819f0
-    position: {x: 1461.6, y: 194.40001}
+    position: {x: 1461.6, y: 194.4}
     group: {fileID: 11400000, guid: 0462d277b229cab489a619aad7c7fd1b, type: 2}
     choiceCount: 0
     hasChoice: 0
   - nodeGuid: 6a8aa012-6e0c-4e07-8f7b-d7db99b375b6
-    position: {x: 677.60004, y: 178.40001}
+    position: {x: 677.6, y: 178.4}
     group: {fileID: 11400000, guid: a155ea20f2210d8408116ef5ab7146cd, type: 2}
+    choiceCount: 0
+    hasChoice: 0
+  - nodeGuid: a0eafb6f-a46b-40c5-9fbf-a37149d3a432
+    position: {x: 92.8, y: 508}
+    group: {fileID: 11400000, guid: 8721bf3a096a07242bcee5f0bdfe08ea, type: 2}
     choiceCount: 0
     hasChoice: 0
   nodeEdgeDatas:
@@ -97,3 +102,5 @@ MonoBehaviour:
   - startNodeGuid: 00e4aa94-b9a4-4c85-8eec-a149dcbca518
     endNodeGuid: 6a8aa012-6e0c-4e07-8f7b-d7db99b375b6
     startPortIndex: 0
+  graphViewScale: {x: 0.25, y: 0.25, z: 1}
+  graphViewPosition: {x: 233.6, y: 165.6, z: 0}

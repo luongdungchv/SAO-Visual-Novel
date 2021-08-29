@@ -10,7 +10,6 @@ public class ContentManager : MonoBehaviour
     public static ContentManager ins;
 
     public DataSlot slot;
-    public List<Sprite> currentCharImages;
 
     [HideInInspector]
     public List<GameObject> buttonList;
@@ -34,6 +33,8 @@ public class ContentManager : MonoBehaviour
     private Queue<Content> contentQueue;
     private Content currentContent;
 
+    private AudioSource audioPlayer;
+
     private Coroutine writeRoutine;
 
     private void Start()
@@ -44,12 +45,12 @@ public class ContentManager : MonoBehaviour
         };
 
         ins = this;
-
-        nextButton.onClick.AddListener(PlayContent);
-        Debug.Log($"{group.nextGroup} {group}");
+        audioPlayer = GetComponent<AudioSource>();
+        
         TransitionManager.Fade("in", fadePanel, () => 
         {
-             PlayContent();           
+             PlayContent();
+             nextButton.onClick.AddListener(PlayContent);
         });
     }
 
@@ -62,7 +63,6 @@ public class ContentManager : MonoBehaviour
         if (contentQueue.Count >= 0)
         {
             
-            //Debug.Log(group.nextGroup);
             if (isWriting)
             {
                 isWriting = false;
@@ -84,9 +84,10 @@ public class ContentManager : MonoBehaviour
                 }
                 if (group.nextGroup != null)
                 {
-                    Debug.Log("g");
+                    nextButton.interactable = false;
                     group.nextGroup.PlayTransitionEffect(fadePanel, animationText, () => ReloadScene(group.nextGroup), () =>
                     {
+                        nextButton.interactable = true;
                         ReloadScene(group);
                         PlayContent();
                     });
@@ -116,6 +117,10 @@ public class ContentManager : MonoBehaviour
         speakerText.text = c.speaker;
 
         writeRoutine = StartCoroutine(c.AnimateText());
+
+        PlayAudio(c);
+
+        slot.Save();
     }
     public int GetCurrentIndex()
     {
@@ -131,18 +136,18 @@ public class ContentManager : MonoBehaviour
     }
     void RenderButton(Selection s)
     {
+        if (selectionBtnContainer.transform.childCount > 0) return;
         foreach (var i in s.selections)
         {
             var newButton = Instantiate(selectionButtonPrefab);
-
             newButton.GetComponentInChildren<TextMeshProUGUI>().text = i.answer;
-            buttonList.Add(newButton.gameObject);
-            newButton.transform.SetParent(selectionBtnContainer);
-            newButton.transform.localScale = new Vector3(1, 1, 1);
+            AddButton(newButton);
             newButton.onClick.AddListener(() =>
             {
                 nextButton.onClick.AddListener(PlayContent);
+                nextButton.interactable = false;
                 i.group.PlayTransitionEffect(fadePanel, animationText, () => ReloadScene(i.group), () => {
+                    nextButton.interactable = true;
                     ReloadScene(i.group);
                     PlayContent();
                 });
@@ -151,7 +156,6 @@ public class ContentManager : MonoBehaviour
     }
     public void GenerateContentQueue(int startIndex)
     {
-        Debug.Log(startIndex);
         contentQueue = new Queue<Content>();
         List<Content> contents = group.contents;
         for (int i = startIndex; i < contents.Count; i++)
@@ -162,8 +166,7 @@ public class ContentManager : MonoBehaviour
         }
     }
     public void LoadNewGroup(ContentGroup newGroup, int startIndex)
-    {
-        
+    {      
         group = newGroup;
         GenerateContentQueue(startIndex);     
         background.sprite = group.background;
@@ -175,7 +178,6 @@ public class ContentManager : MonoBehaviour
     void ReloadScene(ContentGroup group)
     {
         contentText.text = "";
-        for (int n = 0; n < 3; n++) currentCharImages[n] = null;
 
         AnimationPlayer.ins.originalRenderers.ForEach(n =>
         {
@@ -188,7 +190,21 @@ public class ContentManager : MonoBehaviour
         Debug.Log(group);
         LoadNewGroup(group, 0);
         buttonList.ForEach(n => Destroy(n));
+        buttonList.Clear();
 
+    }
+    void PlayAudio(Content c)
+    {
+        audioPlayer.Stop();
+        if (c.audioClip == null) return;
+        audioPlayer.clip = c.audioClip;
+        audioPlayer.Play();
+    }
+    void AddButton(Button newButton)
+    {
+        buttonList.Add(newButton.gameObject);
+        newButton.transform.SetParent(selectionBtnContainer);
+        newButton.transform.localScale = new Vector3(1, 1, 1);
     }
 }
 [Serializable]

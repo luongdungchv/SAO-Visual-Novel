@@ -17,6 +17,7 @@ public class DataSlotInspector : Editor
     Foldout charList;
     Button modifyDataBtn;
     VisualElement modifierElement;
+    Toggle isMainField;
 
     DataSlot slot;
 
@@ -63,7 +64,7 @@ public class DataSlotInspector : Editor
             
             Data2 saveData = new Data2()
             {
-                groupId = (idManagerField.value as ObjectIdManager).groupList.IndexOf((newGroupField.value as ContentGroup)),
+                groupId = (idManagerField.value as ObjectIdManager).GetGroupIndex((newGroupField.value as ContentGroup)),
                 contentIndex = newContentIndexField.value,
                 saveDate = "",
                 imageData = new List<Character> { null, null, null}
@@ -71,7 +72,7 @@ public class DataSlotInspector : Editor
             
             string json = JsonUtility.ToJson(saveData);
             slot.SaveJsonData(json);
-            Debug.Log(PlayerPrefs.GetString("dataslot3"));
+            Debug.Log(saveData.groupId);
             Data2 loadData = JsonUtility.FromJson<Data2>(slot.GetJsonData());
             try { slot.GetData(loadData); } catch { };
            
@@ -101,6 +102,7 @@ public class DataSlotInspector : Editor
         saveDateField = saveDateElement.Q<TextField>();
         contentIndexField = contentIndexElement.Query<TextField>();
         dataAddressField = dataAddressElement.Q<TextField>();
+        isMainField = container.Q<Toggle>("isMain");
         charList = container.Query<Foldout>();
         modifyDataBtn = container.Query<Button>();
         modifierElement = CreateModifier();
@@ -121,6 +123,13 @@ public class DataSlotInspector : Editor
 
         contentIndexField.SetEnabled(false);
         saveDateField.SetEnabled(false);
+
+        //isMainField.value = slot.isMain;
+        //isMainField.SetValueWithoutNotify(slot.isMain);
+        //isMainField.RegisterValueChangedCallback(v =>
+        //{
+        //    slot.isMain = v.newValue;
+        //});
 
         //modifyDataBtn.SetEnabled(false);
 

@@ -9,6 +9,7 @@ using System;
 using UnityEditor.AddressableAssets;
 using UnityEditor.AddressableAssets.Settings;
 using UnityEditor;
+using UnityEngine.AddressableAssets;
 
 public class TestGraph : GraphView
 {
@@ -17,6 +18,7 @@ public class TestGraph : GraphView
     private NodeSearchWindow searchWindow;
     public static BaseNodeData copiedNodeData;
     public static CopiedData copiedData;
+    public List<ContentGroup> pendingSaveGroups;
 
     public TestGraph(TestEditorWindow input)
     {
@@ -120,6 +122,8 @@ public class TestGraph : GraphView
         TestAddressable();
     }
 
+    
+
     public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter)
     {
         
@@ -163,10 +167,8 @@ public class TestGraph : GraphView
     }
     void TestAddressable()
     {
-        //var t = AddressablesEditor.LoadAllAsset<ContentGroup>("Groups");
-        //t.ForEach(n => Debug.Log(n)); 
-        //var t = AssetDatabase.LoadAllAssetsAtPath("Assets/Resourcesw/CharacterSprites/hoshi2 1.psb").Where(n => n is GameObject).Cast<GameObject>().ToList();
-        //foreach (var i in t) Debug.Log(i);
+        var op = Addressables.LoadAssetAsync<GameObject>("CharacterPrefabs/hoshi2 1.prefab");
+        var res = op.WaitForCompletion();
     }
      
 }

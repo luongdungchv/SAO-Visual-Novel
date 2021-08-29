@@ -23,6 +23,8 @@ public class Content
     public string currentContent;
     int index = 0;
     public string speaker;
+
+    public AudioClip audioClip;
     
     public SpriteRenderPos renderPos;
 

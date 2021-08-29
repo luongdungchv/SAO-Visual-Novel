@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:engine="UnityEngine.UIElements"
     xmlns:editor="UnityEditor.UIElements"
-    xsi:noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd"
+    xsi:noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd"
 >
     <engine:VisualElement class="dataslot-inspector" name="group">
       <engine:Label text="Group"/>
@@ -30,6 +30,7 @@
       <engine:TextField binding-path="saveDate"/>
     </engine:VisualElement>
 
+    <engine:Toggle class ="dataslot-inspecter" name="isMain" binding-path="isMain" label="isMain"/>
   <engine:Foldout text ="Character Images" binding-path="charImageList">
     <editor:ObjectField binding-path="charImageList.Array.data[0]"/>
     <editor:ObjectField binding-path="charImageList.Array.data[1]"/>

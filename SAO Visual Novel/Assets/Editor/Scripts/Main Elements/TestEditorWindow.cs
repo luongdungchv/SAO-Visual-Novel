@@ -12,6 +12,7 @@ public class TestEditorWindow : EditorWindow
     public TestGraph graph;
     public Button saveBtn;
     private GraphDataContainer container;
+    private GraphSaveLoadData dataManipulator;
     public static bool isLoad = true;
 
     //[MenuItem("Assets/Test Window")]
@@ -42,7 +43,6 @@ public class TestEditorWindow : EditorWindow
     
     private void OnEnable()
     {
-        
         if (isLoad)
         {
             try
@@ -65,6 +65,7 @@ public class TestEditorWindow : EditorWindow
     {
         rootVisualElement.Clear();
         GenerateGraph();
+        dataManipulator = new GraphSaveLoadData(graph);
         rootVisualElement.Add(CreateToolbar());
         Load();
     }
@@ -99,13 +100,12 @@ public class TestEditorWindow : EditorWindow
     }
     private void Save()
     {
-        GraphSaveLoadData dataManipulator = new GraphSaveLoadData(graph);
         dataManipulator.Save(container);
+        Setup();
     }
     private void Load()
     {
-        GraphSaveLoadData manipulator = new GraphSaveLoadData(graph);
-        manipulator.Load(container);
+        dataManipulator.Load(container);
     }
     void OpenGroupManager()
     {

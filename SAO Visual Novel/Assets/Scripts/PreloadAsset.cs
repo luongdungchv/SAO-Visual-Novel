@@ -15,7 +15,6 @@ public class PreloadAsset : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("start");
         startBtn.interactable = false;
         var loadIdManagerOperation = Addressables.DownloadDependenciesAsync("Asset");
         StartCoroutine(VisualizeLoadProgress(loadIdManagerOperation));

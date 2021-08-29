@@ -9,21 +9,43 @@ public class TestFile : MonoBehaviour
     public BoxCollider2D box2;
     public SpriteRenderer mesh;
     public GameObject obj;
+    public MeshRenderer rend;
     // Start is called before the first frame update
     void Start()
     {
-        var b1 = obj.transform.GetChild(1).GetComponent<BoxCollider2D>();
-        var b2 = obj.transform.GetChild(2).GetComponent<BoxCollider2D>();
-        Debug.Log(b1.bounds.size);
+        //var b1 = obj.transform.GetChild(1).GetComponent<BoxCollider2D>();
+        //var b2 = obj.transform.GetChild(2).GetComponent<BoxCollider2D>();
+        //Debug.Log(b1.bounds.size);
         //var tex = MergeImage(b1, b2);
         //var sprite = Sprite.Create(tex, new Rect(0.0f, 0.0f, tex.width, tex.height), new Vector2(0.5f, 0.5f), 100.0f);
         //mesh.sprite = sprite;
+        StartCoroutine(LerpImage(rend.material,rend.material.GetTexture("Tex1") , 2f));
+        //rend.material.SetVector("Rate", Vector4.zero);
+        Debug.Log(rend.material.GetTexture("Tex1"));
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+    IEnumerator LerpImage(Material mat, Texture targetTex ,float duration)
+    {
+        float t = 0;
+        var tmpTex = mat.GetTexture("Tex2");
+        var defaultTex = new Texture2D(1, 1);
+        defaultTex.SetPixel(0, 0, new Color(0, 0, 0, 0));
+        defaultTex.Apply();
+
+        mat.SetTexture("Tex1", tmpTex == null ? defaultTex : tmpTex);
+        mat.SetTexture("Tex2", targetTex);
+        while(t < 1)
+        {
+            t += Time.deltaTime / duration;
+            var current = Vector4.Lerp(Vector4.zero,Vector4.one , t);
+            mat.SetVector("Rate", current);
+            yield return null;
+        }
     }
     Texture2D GetTexture(Sprite i)
     {

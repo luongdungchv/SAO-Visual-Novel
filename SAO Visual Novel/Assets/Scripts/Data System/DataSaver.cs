@@ -16,12 +16,17 @@ public class DataSaver : MonoBehaviour
         button = GetComponent<Button>();
         button.onClick.AddListener(() => { slot.Save(); });
         button.onClick.AddListener(() => { SystemManager.ins.SwitchPanel(transform.parent.gameObject); });
+        
     }
-
-    private void OnEnable()
+    void OnEnable()
     {
         dateText = transform.GetComponentInChildren<TextMeshProUGUI>();
-        Debug.Log(slot.HasData());
+        slot.SetSaver(this);
+        Setup();
+    }
+    public void Setup()
+    {
+        Debug.Log("Setup");
         if (slot.HasData())
             dateText.text = slot.saveDate;
         else

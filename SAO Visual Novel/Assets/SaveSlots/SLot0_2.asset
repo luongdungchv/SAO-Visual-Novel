@@ -12,12 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbf31b1df4a774e47b042e4c695e572f, type: 3}
   m_Name: SLot0_2
   m_EditorClassIdentifier: 
-  group: {fileID: 11400000, guid: d9677dc89f263164c80b7e4685f35a33, type: 2}
+  group: {fileID: 11400000, guid: 19f52f1b2c83e634398f661ad6359aa8, type: 2}
+  idManagerRef:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   idManager: {fileID: 11400000, guid: f4f0d818b2920e84594d2b97b23aafd2, type: 2}
   dataAddress: dataslot2
-  contentIndex: 1
-  saveDate: 4/26/2021 8:51:20 PM
+  contentIndex: 0
+  saveDate: 8/28/2021 8:31:20 PM
   charImageList:
   - {fileID: 21300000, guid: 612fb9e0e54af444cb58a947ec5a6a7f, type: 3}
   - {fileID: 21300000, guid: f7333e9dfec37684e800c8eaa01a0f9d, type: 3}
   - {fileID: 21300000, guid: 0a50e863461ac0d4eaee4545bc8bd5b9, type: 3}
+  isMain: 0

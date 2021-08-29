@@ -130,11 +130,16 @@ public class ContentNode : BaseNode
                     {
                         ContentGroup newGroup = ScriptableObject.CreateInstance<ContentGroup>();
                         newGroup.contents = new List<Content>();
-                        AssetDatabase.CreateAsset(newGroup, $"Assets/ContentGroups/{namingField.value}.asset");
-                        EditorUtility.SetDirty(ObjectIdManager.ins);
-                        ObjectIdManager.ins.groupList.Add(newGroup);
+                        newGroup.selection = new Selection();
+
+                        var groupName = namingField.value;
+                        if (namingField.value == string.Empty) groupName = "New Group";
+                        GraphSaveLoadData.AddGroupToPending(newGroup, groupName);
+                        //AssetDatabase.CreateAsset(newGroup, $"Assets/ContentGroups/{groupName}.asset");
+                        //EditorUtility.SetDirty(ObjectIdManager.ins);
+                        //ObjectIdManager.ins.groupList.Add(newGroup);
                         groupField.SetValueWithoutNotify(newGroup);
-                        AssetDatabase.SaveAssets();
+                        //AssetDatabase.SaveAssets();
                     }
                     addGroupBtn.SetEnabled(true);
                     addGroupBtn.Remove(namingField);
@@ -142,7 +147,8 @@ public class ContentNode : BaseNode
             });
             graph.RegisterCallback<MouseUpEvent>(v =>
             {
-                if (v.button == 0 && addGroupBtn.Contains(namingField)) addGroupBtn.Remove(namingField); 
+                if (v.button == 0 && addGroupBtn.Contains(namingField)) addGroupBtn.Remove(namingField);
+                
             });
         };
         

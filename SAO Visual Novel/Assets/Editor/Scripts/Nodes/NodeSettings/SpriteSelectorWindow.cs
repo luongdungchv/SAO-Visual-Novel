@@ -19,25 +19,26 @@ public class SpriteSelectorWindow : EditorWindow
     public void Setup(string name)
     {
         //Sprite[] sprites = Resources.LoadAll<Sprite>($"CharacterSprites/{name}");
-        Addressables.LoadAssetsAsync<Sprite>("group", null).Completed += obj =>
+        
+        Addressables.LoadAssetAsync<IList<Sprite>>($"CharacterSprites/{name}.psb").Completed += obj =>
         {
-            
-        };
-        var sprites = AddressablesEditor.LoadAllAsset<GameObject>($"CharacterSprites/{name}.psb").Select(n => n.GetComponent<SpriteRenderer>().sprite).ToList();
-        Debug.Log(sprites.Count);
-        for (int n = 0; n < sprites.Count; n++)
-        {
-            var i = sprites[n];
-            Texture2D btnImage = new Texture2D((int)i.rect.width, (int)i.rect.height);
-            var pixels = i.texture.GetPixels((int)Mathf.Round(i.rect.x),
-                                                (int)Mathf.Round(i.rect.y),
-                                                (int)Mathf.Round(i.rect.width),
-                                                (int)Mathf.Round(i.rect.height));
-            btnImage.SetPixels(pixels);
-            btnImage.Apply();
+            var sprites = obj.Result as List<Sprite>;
+            Debug.Log(sprites.Count);
+            for (int n = 0; n < sprites.Count; n++)
+            {
+                var i = sprites[n];
+                Texture2D btnImage = new Texture2D((int)i.rect.width, (int)i.rect.height);
+                var pixels = i.texture.GetPixels((int)Mathf.Round(i.rect.x),
+                                                    (int)Mathf.Round(i.rect.y),
+                                                    (int)Mathf.Round(i.rect.width),
+                                                    (int)Mathf.Round(i.rect.height));
+                btnImage.SetPixels(pixels);
+                btnImage.Apply();
 
-            rootVisualElement.Add(CreateButton(btnImage, n));
-        }
+                rootVisualElement.Add(CreateButton(btnImage, n));
+            }
+        };
+       
 
     }
     public Button CreateButton(Texture2D backgroundImage, int spriteIndex)

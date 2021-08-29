@@ -12,19 +12,38 @@ public class GraphSaveLoadData
 {
     public static event EventHandler OnSave;
     private TestGraph graph;
+    private static Dictionary<ContentGroup, string> pendingSaveGroups;
     List<Edge> edgeList => graph.edges.ToList();
     List<BaseNode> nodeList => graph.nodes.ToList().Where(n => n is BaseNode).Cast<BaseNode>().ToList();
 
     public GraphSaveLoadData(TestGraph graph)
     {
         this.graph = graph;
-        
+        pendingSaveGroups = new Dictionary<ContentGroup, string>();
     }
+
+    public static void AddGroupToPending(ContentGroup group, string name)
+    {
+        pendingSaveGroups.Add(group, name);
+    }
+
     public void Save(GraphDataContainer dataContainer)
     {
+        Debug.Log(pendingSaveGroups.Count);
+        foreach (var i in pendingSaveGroups)
+        {
+            AssetDatabase.CreateAsset(i.Key, $"Assets/ContentGroups/{i.Value}.asset");
+            EditorUtility.SetDirty(ObjectIdManager.ins);
+            ObjectIdManager.ins.AddGroup(i.Key);
+        }
+
+        dataContainer.graphViewPosition = graph.viewTransform.position;
+        dataContainer.graphViewScale = graph.viewTransform.scale;
+
         SaveEdges(dataContainer);
         SaveNode(dataContainer);
         SaveData();
+        
 
         EditorUtility.SetDirty(dataContainer);
         AssetDatabase.SaveAssets();
@@ -32,6 +51,7 @@ public class GraphSaveLoadData
     public void Load(GraphDataContainer dataContainer)
     {
         LoadNodes(dataContainer);
+        graph.UpdateViewTransform(dataContainer.graphViewPosition, dataContainer.graphViewScale);
     }
     void SaveEdges(GraphDataContainer dataContainer)
     {

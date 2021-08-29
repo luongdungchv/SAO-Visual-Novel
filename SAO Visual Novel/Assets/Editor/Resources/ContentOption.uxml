@@ -36,6 +36,10 @@
       <engine:TextField name="vietnameseField" class ="valueField" multiline="true"></engine:TextField>
     </engine:VisualElement>
 
+    <engine:VisualElement class ="content">
+      <engine:Label text ="Audio"/>
+      <editor:ObjectField name="audioField" class="valueField"></editor:ObjectField>
+    </engine:VisualElement>
 
     <engine:VisualElement class="content">
       <engine:Label text="Speaker"/>

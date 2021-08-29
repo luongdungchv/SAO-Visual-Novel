@@ -16,11 +16,14 @@ MonoBehaviour:
   idManagerRef:
     m_AssetGUID: 
     m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   idManager: {fileID: 11400000, guid: f4f0d818b2920e84594d2b97b23aafd2, type: 2}
   dataAddress: dataslot3
-  contentIndex: 2
-  saveDate: 
+  contentIndex: 0
+  saveDate: 8/28/2021 8:31:18 PM
   charImageList:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  isMain: 0

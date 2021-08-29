@@ -24,6 +24,11 @@ public class DataSlot : ScriptableObject
 
     public static event EventHandler OnDataChecked;
 
+    public bool isMain;
+
+    private DataLoader loader;
+    private DataSaver saver;
+
     public void OnEnable()
     {
         if (idManager == null) return;
@@ -34,11 +39,6 @@ public class DataSlot : ScriptableObject
         try
         {
             Data2 loadData = JsonUtility.FromJson<Data2>(GetJsonData());
-            if (dataAddress == "dataslot3")
-            {
-                Debug.Log(GetJsonData());
-                Debug.Log(loadData.imageData.Count);
-            }
             GetData(loadData);
         }
         catch
@@ -66,7 +66,7 @@ public class DataSlot : ScriptableObject
         group = manager.GetCurrentGroup();
         Data2 saveData = new Data2()
         {
-            groupId = idManager.groupList.IndexOf(manager.GetCurrentGroup()),
+            groupId = idManager.GetGroupIndex(manager.GetCurrentGroup()),
             contentIndex = manager.GetCurrentIndex(),
             saveDate = DateTime.Now.ToString(),
             imageData = new List<Character>()
@@ -79,6 +79,11 @@ public class DataSlot : ScriptableObject
         }
         string json = JsonUtility.ToJson(saveData);
         SaveJsonData(json);
+
+        GetData(saveData);
+
+        if (loader != null) loader.Setup();
+        if (saver != null) saver.Setup();
     }
     public void Load()
     {
@@ -104,6 +109,7 @@ public class DataSlot : ScriptableObject
             ContentManager manager = GameObject.Find("ContentManager").GetComponent<ContentManager>();
             manager.LoadNewGroup(group, contentIndex);
             AnimationPlayer animPlayer = GameObject.Find("AnimationPlayer").GetComponent<AnimationPlayer>();
+            Debug.Log(savedImageData.Count);
             for (int i = 0; i < animPlayer.originalRenderers.Count; i++)
             {
                 try 
@@ -113,7 +119,6 @@ public class DataSlot : ScriptableObject
                 } 
                 catch { }
             }
-
         };
     }
     
@@ -124,7 +129,7 @@ public class DataSlot : ScriptableObject
    
     public void GetData(Data2 data)
     {
-        group = idManager.groupList[data.groupId];
+        group = idManager.GetGroup(data.groupId);
         contentIndex = data.contentIndex;
         saveDate = data.saveDate;
         savedImageData = new List<Character>(data.imageData);
@@ -133,7 +138,14 @@ public class DataSlot : ScriptableObject
     {
         return PlayerPrefs.GetString(dataAddress, "");
     }
-    
+    public void SetLoader(DataLoader _loader)
+    {
+        loader = _loader;
+    }
+    public void SetSaver(DataSaver _saver)
+    {
+        saver = _saver;
+    }
 }
 [Serializable]
 public class Data

@@ -19,13 +19,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3daaa0df04570684cba68fe337582962, type: 2}
   - {fileID: 11400000, guid: a155ea20f2210d8408116ef5ab7146cd, type: 2}
   - {fileID: 11400000, guid: 8f26357c8d82f214bbbbe5ed61ae64c1, type: 2}
-  - {fileID: 11400000, guid: 8f26357c8d82f214bbbbe5ed61ae64c1, type: 2}
+  - {fileID: 11400000, guid: 036edaf46d6949a48abc400d32a65cb0, type: 2}
   - {fileID: 11400000, guid: 4bb89516f3fb38341bd8bb7f853865b1, type: 2}
   - {fileID: 11400000, guid: 0462d277b229cab489a619aad7c7fd1b, type: 2}
   - {fileID: 11400000, guid: 534094acbac722f4e8e1fb34216db4e3, type: 2}
   - {fileID: 11400000, guid: 65115a2ec84e95243b4f94f0e297be78, type: 2}
-  spriteList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  imageList: []

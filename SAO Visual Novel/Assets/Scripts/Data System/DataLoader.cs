@@ -28,21 +28,16 @@ public class DataLoader : MonoBehaviour
 
         text = GetComponentInChildren<TextMeshProUGUI>();
 
+        //Debug.Log(slot.isMain);
     }
     private void OnEnable()
     {
-        if (!isMain)
-        {
-            if (slot.HasData())
-                text.text = slot.saveDate;
-            else
-                text.text = "No Data";
-        }
+        slot.SetLoader(this);
+        Setup();
     }
 
     public void OnButtonClick()
     {
-        Debug.Log(slot.group);
         if (!slot.HasData())
         {
             Debug.Log("No Data");
@@ -54,6 +49,15 @@ public class DataLoader : MonoBehaviour
         });
 
     }
-
+    public void Setup()
+    {
+        if (!slot.isMain)
+        {
+            if (slot.HasData())
+                text.text = slot.saveDate;
+            else
+                text.text = "No Data";
+        }
+    }
    
 }

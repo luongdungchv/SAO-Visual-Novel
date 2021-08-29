@@ -17,7 +17,6 @@ public class LanguageSetting : Setting
     private void Start()
     {
         ins = this;
-        Debug.Log(group.nextGroup);
     }
     
     public override void OnSubmit(SettingData data)

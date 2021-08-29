@@ -13,6 +13,8 @@ public class GraphDataContainer : ScriptableObject
     public List<SubgraphNodeData> subgraphNodeDatas;
     public List<ContentNodeData> nodeDatas;
     public List<NodeEdgeData> nodeEdgeDatas;
+    public Vector3 graphViewScale;
+    public Vector3 graphViewPosition;
 
     public BaseNodeData GetNodeDataByGuid(string guid)
     {
@@ -68,7 +70,7 @@ public class GraphDataContainer : ScriptableObject
                 data = (n as SubgraphNode).dataContainer
             };
         ContentNode tmpNode = n as ContentNode;
-        EditorUtility.SetDirty(tmpNode.group);
+        //EditorUtility.SetDirty(tmpNode.group);
         return new ContentNodeData()
         {
             group = tmpNode.group,

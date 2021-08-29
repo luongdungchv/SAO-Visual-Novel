@@ -276,6 +276,7 @@ public class ContentOption
         TextField englishField = contentOption.Query<TextField>("englishField");
         TextField vietnameseField = contentOption.Query<TextField>("vietnameseField");
         TextField speakerField = contentOption.Query<TextField>("speakerField");
+        ObjectField audioField = contentOption.Q<ObjectField>("audioField");
         ToolbarMenu renderPosMenu = contentOption.Query<ToolbarMenu>("renderPosMenu");
 
         Foldout elementContainer = contentOption.Query<Foldout>("container");
@@ -287,83 +288,15 @@ public class ContentOption
         Image emotionImage = characterStats.Query<Image>("emotionImage");
         Button selectEmotionImage = characterStats.Query<Button>("selectEmotionImage");
 
-        try
-        {
-            nameMenu.text = i.character.name;
-
-            var aaSetting = AddressableAssetSettingsDefaultObject.Settings;
-           
-            Addressables.LoadAssetsAsync<Sprite>("sprite", null).Completed += obj =>
-            {
-                
-            };
-             
-            Debug.Log("gg");
-            var sprites = AddressablesEditor.LoadAllAsset<GameObject>($"CharacterSprites/{nameMenu.text}.psb");
-            Debug.Log(sprites[0]);
-
-            bodyIndex = i.character.bodyIndex;
-            emotionIndex = i.character.emotionIndex;
-
-            bodyImage.image = parent.GetTexture(sprites[bodyIndex].GetComponent<SpriteRenderer>().sprite);
-            emotionImage.image = parent.GetTexture(sprites[emotionIndex].GetComponent<SpriteRenderer>().sprite);
-
-            bodyImage.scaleMode = ScaleMode.ScaleToFit;
-            emotionImage.scaleMode = ScaleMode.ScaleToFit;
-
-        }
-        catch (Exception e) { Debug.Log(e); }
-        selectBodyImage.clicked += () =>
-        {
-            parent.OpenSpriteWindow(this, "body", nameMenu.text);
-        };
-        selectEmotionImage.clicked += () =>
-        {
-            parent.OpenSpriteWindow(this, "emotion", nameMenu.text);
-        };
-        Addressables.LoadAssetsAsync<GameObject>("prefab", null).Completed += obj =>
-        {
-            var spriteList = obj.Result as List<GameObject>;
-            foreach (var n in spriteList)
-            {
-                nameMenu.menu.AppendAction(n.name, new Action<DropdownMenuAction>(v =>
-                {
-                    nameMenu.text = n.name;
-
-                    bodyImage.image = Texture2D.whiteTexture;
-                    emotionImage.image = Texture2D.whiteTexture;
-
-                    bodyIndex = 0;
-                    emotionIndex = 0;
-                }));
-            }
-        };
         elementContainer.text = $"Content {index}";
 
-        englishField.SetValueWithoutNotify(i.englishContent);
-        vietnameseField.SetValueWithoutNotify(i.vietnameseContent);
-        speakerField.SetValueWithoutNotify(i.speaker);
-        renderPosMenu.text = i.renderPos.ToString();
-
+        InitCharacterConfiguring();
+        InitWordsConfiguring();
         Content.SpriteRenderPos renderPos = i.renderPos;
-        renderPosMenu.menu.AppendAction("Left", new Action<DropdownMenuAction>(n =>
-        {
-            renderPosMenu.text = n.name;
-            renderPos = Content.SpriteRenderPos.Left;
-            i.renderPos = renderPos;
-        }));
-        renderPosMenu.menu.AppendAction("Mid", new Action<DropdownMenuAction>(n =>
-        {
-            renderPosMenu.text = n.name;
-            renderPos = Content.SpriteRenderPos.Mid;
-            i.renderPos = renderPos;
-        }));
-        renderPosMenu.menu.AppendAction("Right", new Action<DropdownMenuAction>(n =>
-        {
-            renderPosMenu.text = n.name;
-            renderPos = Content.SpriteRenderPos.Right;
-            i.renderPos = renderPos;
-        }));
+        InitRenderPosConfiguring();
+        
+
+        
         ContentConfiguring.OnSave += (s, e) =>
         {
             i.character.name = nameMenu.text;
@@ -373,8 +306,92 @@ public class ContentOption
             i.englishContent = englishField.value;
             i.vietnameseContent = vietnameseField.value;
             i.speaker = speakerField.value;
+            i.audioClip = audioField.value as AudioClip;
+            if(i.audioClip != null) EditorUtility.SetDirty(i.audioClip);
             i.renderPos = renderPos;
         };
+
+        void InitCharacterConfiguring()
+        {
+            try
+            {
+                nameMenu.text = i.character.name;
+
+                Debug.Log("gg");
+                Addressables.LoadAssetAsync<IList<Sprite>>($"CharacterSprites/{nameMenu.text}.psb").Completed += obj =>
+                {
+                    var sprites = obj.Result as List<Sprite>;
+                    Debug.Log(sprites[0]);
+
+                    bodyIndex = i.character.bodyIndex;
+                    emotionIndex = i.character.emotionIndex;
+
+                    bodyImage.image = parent.GetTexture(sprites[bodyIndex]);
+                    emotionImage.image = parent.GetTexture(sprites[emotionIndex]);
+
+                    bodyImage.scaleMode = ScaleMode.ScaleToFit;
+                    emotionImage.scaleMode = ScaleMode.ScaleToFit;
+                };
+
+
+            }
+            catch (Exception e) { Debug.Log(e); }
+            selectBodyImage.clicked += () =>
+            {
+                parent.OpenSpriteWindow(this, "body", nameMenu.text);
+            };
+            selectEmotionImage.clicked += () =>
+            {
+                parent.OpenSpriteWindow(this, "emotion", nameMenu.text);
+            };
+            Addressables.LoadAssetsAsync<GameObject>("prefab", null).Completed += obj =>
+            {
+                var spriteList = obj.Result as List<GameObject>;
+                foreach (var n in spriteList)
+                {
+                    nameMenu.menu.AppendAction(n.name, new Action<DropdownMenuAction>(v =>
+                    {
+                        nameMenu.text = n.name;
+
+                        bodyImage.image = Texture2D.whiteTexture;
+                        emotionImage.image = Texture2D.whiteTexture;
+
+                        bodyIndex = 0;
+                        emotionIndex = 0;
+                    }));
+                }
+            };
+        }
+        void InitWordsConfiguring()
+        {
+            englishField.SetValueWithoutNotify(i.englishContent);
+            vietnameseField.SetValueWithoutNotify(i.vietnameseContent);
+            speakerField.SetValueWithoutNotify(i.speaker);
+            audioField.objectType = typeof(AudioClip);
+            audioField.SetValueWithoutNotify(i.audioClip);
+        }
+        void InitRenderPosConfiguring()
+        {
+            renderPosMenu.text = i.renderPos.ToString();
+            renderPosMenu.menu.AppendAction("Left", new Action<DropdownMenuAction>(n =>
+            {
+                renderPosMenu.text = n.name;
+                renderPos = Content.SpriteRenderPos.Left;
+                i.renderPos = renderPos;
+            }));
+            renderPosMenu.menu.AppendAction("Mid", new Action<DropdownMenuAction>(n =>
+            {
+                renderPosMenu.text = n.name;
+                renderPos = Content.SpriteRenderPos.Mid;
+                i.renderPos = renderPos;
+            }));
+            renderPosMenu.menu.AppendAction("Right", new Action<DropdownMenuAction>(n =>
+            {
+                renderPosMenu.text = n.name;
+                renderPos = Content.SpriteRenderPos.Right;
+                i.renderPos = renderPos;
+            }));
+        }
     }
     public void SetImage(string type, int index, Texture2D tex)
     {
