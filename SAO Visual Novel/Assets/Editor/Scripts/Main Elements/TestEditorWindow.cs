@@ -68,16 +68,23 @@ public class TestEditorWindow : EditorWindow
         dataManipulator = new GraphSaveLoadData(graph);
         rootVisualElement.Add(CreateToolbar());
         Load();
+        graph.viewTransformChanged = v =>
+        {
+            graph.OnChange();
+            //Debug.Log(v.viewTransform.scale); 
+        };
     }
     VisualElement CreateToolbar()
     {
         VisualElement root = new VisualElement();
         root.style.flexDirection = FlexDirection.Row;
 
-        Button saveBtn = new Button(Save)
+        saveBtn = new Button(Save)
         {
             text = "Save",          
         };
+
+        
         saveBtn.style.width = 80;
 
         Button manageGroupBtn = new Button(OpenGroupManager)

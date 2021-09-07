@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.Networking;
 using TMPro;
 using System;
+
+
 public class ContentManager : MonoBehaviour
 {
     public static ContentManager ins;

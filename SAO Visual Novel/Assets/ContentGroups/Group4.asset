@@ -28,6 +28,7 @@ MonoBehaviour:
     contentText: {fileID: 0}
     currentContent: eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
     speaker: Person 2
+    audioClip: {fileID: 0}
     renderPos: 2
   background: {fileID: 21300000, guid: a3653d37838382a46baab31efc1a512d, type: 3}
   nextGroup: {fileID: 11400000, guid: 8f26357c8d82f214bbbbe5ed61ae64c1, type: 2}

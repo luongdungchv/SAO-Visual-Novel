@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using System.Linq;
 
 public class AnimationPlayer : MonoBehaviour
 {
@@ -61,7 +62,7 @@ public class AnimationPlayer : MonoBehaviour
         while ( t <= 1)
         {
             t += Time.deltaTime / time;
-            Color newColor = new Color(1, 1, 1, 1);
+            Color newColor = Color.white;
             float a = Mathf.Lerp(1, 0, t);
             newColor.a = a;
             for(int i = 0; i < 3; i++)
@@ -71,16 +72,7 @@ public class AnimationPlayer : MonoBehaviour
             yield return null;
         }
         Destroy(oldImage.gameObject);
-        //originalRenderers[index] = newImage;
-        //ContentManager.ins.slot.Save();
+       
     }
-    public IEnumerable<Character> GetCurrentImageDatas()
-    {
-        foreach (var i in originalRenderers)
-        {
-            yield return i.character;
-        }
-    }
-
     
 }

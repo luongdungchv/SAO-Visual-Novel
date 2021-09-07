@@ -13,7 +13,6 @@ public class LanguageSetting : Setting
    
     public TMP_Dropdown dropDown;
 
-    public LanguageManager languageManager;
     private void Start()
     {
         ins = this;

@@ -143,6 +143,7 @@ public class ContentNode : BaseNode
                     }
                     addGroupBtn.SetEnabled(true);
                     addGroupBtn.Remove(namingField);
+                    
                 }
             });
             graph.RegisterCallback<MouseUpEvent>(v =>

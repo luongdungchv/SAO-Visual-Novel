@@ -37,11 +37,17 @@ public class TestGraph : GraphView
         grid.StretchToParentSize();
         AddSearchWindow();
 
+        graphViewChanged = v =>
+        {
+            OnChange();
+            return v;
+        };
+        
+
         serializeGraphElements = (s) =>
         {
             copiedData = new CopiedData();
             
-            Debug.Log(selection.Count);
             selection.ForEach(n =>
             {
                 if (n is BaseNode)
@@ -56,7 +62,6 @@ public class TestGraph : GraphView
                 }
             });
             Debug.Log($"{copiedData.nodeDatas.Count} {copiedData.edgeDatas.Count}");
-            //ClearSelection();
             return "gsdfg";
         };
         unserializeAndPaste = (s, e) =>
@@ -72,26 +77,19 @@ public class TestGraph : GraphView
                 BaseNode node = new BaseNode();
                 if (n is EntryNodeData)
                 {
-                    node = CreateEntryNode(renderPos);
-                    node.LoadNodeData(n);
-                    AddElement(node);
-                    clonedNodeList.Add(node);
+                    node = CreateEntryNode(renderPos);                  
                 }
                 if (n is SubgraphNodeData)
                 {
-                    node = CreateSubgraphNode(renderPos);
-                    node.LoadNodeData(n);
-                    AddElement(node);
-                    clonedNodeList.Add(node);
+                    node = CreateSubgraphNode(renderPos);                    
                 }
                 if (n is ContentNodeData)
                 {
                     node = CreateContentNode(renderPos, true);
-                    node.LoadNodeData(n);
-                    AddElement(node);
-                    clonedNodeList.Add(node);
-                }
-                //AddToSelection(node);
+                                   }
+                node.LoadNodeData(n);
+                AddElement(node);
+                clonedNodeList.Add(node);
             });
             copiedData.edgeDatas.ForEach(n =>
             {
@@ -119,7 +117,6 @@ public class TestGraph : GraphView
             clonedEdgeList.ForEach(n => AddToSelection(n));
             Debug.Log(selection[0]);
         };
-        TestAddressable();
     }
 
     
@@ -165,10 +162,9 @@ public class TestGraph : GraphView
         var res = new SubgraphNode(pos, window, this);
         return res;
     }
-    void TestAddressable()
+    public void OnChange()
     {
-        var op = Addressables.LoadAssetAsync<GameObject>("CharacterPrefabs/hoshi2 1.prefab");
-        var res = op.WaitForCompletion();
+        window.saveBtn.text = "Save*";
     }
      
 }

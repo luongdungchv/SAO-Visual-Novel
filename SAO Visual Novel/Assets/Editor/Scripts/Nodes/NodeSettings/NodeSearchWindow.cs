@@ -46,12 +46,11 @@ public class NodeSearchWindow : ScriptableObject, ISearchWindowProvider
         Vector2 mousePos = window.rootVisualElement.ChangeCoordinatesTo
             (window.rootVisualElement.parent, context.screenMousePosition - window.position.position);
         Vector2 graphMousePos = graph.contentViewContainer.WorldToLocal(mousePos);
-        Debug.Log(context.screenMousePosition);
         return CheckNodeType(SearchTreeEntry, graphMousePos);
     }
     private bool CheckNodeType(SearchTreeEntry entry, Vector2 pos)
     {
-       
+        graph.OnChange();
         if(entry.userData.GetType() == typeof(ContentNode)){
             var node = graph.CreateContentNode(pos, false);
             graph.AddElement(node);

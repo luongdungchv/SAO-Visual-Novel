@@ -16,6 +16,14 @@ public class GraphDataContainer : ScriptableObject
     public Vector3 graphViewScale;
     public Vector3 graphViewPosition;
 
+    private void OnEnable()
+    {
+        if (graphViewScale.x <= 0) graphViewScale.x = 1;
+        if (graphViewScale.y <= 0) graphViewScale.y = 1; 
+        if (graphViewScale.z <= 0) graphViewScale.z = 1;
+    }
+    
+
     public BaseNodeData GetNodeDataByGuid(string guid)
     {
         foreach(var i in nodeDatas)
@@ -89,10 +97,7 @@ public class GraphDataContainer : ScriptableObject
             startPortIndex = (n.output.node as BaseNode).outputPortList.IndexOf(n.output)
         };
     }
-    private void OnEnable()
-    {
-        //entryNodeData = new EntryNodeData();
-    }
+    
 }
 [Serializable]
 public class BaseNodeData

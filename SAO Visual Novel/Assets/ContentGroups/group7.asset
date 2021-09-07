@@ -28,6 +28,7 @@ MonoBehaviour:
     contentText: {fileID: 0}
     currentContent: 
     speaker: Player2
+    audioClip: {fileID: 0}
     renderPos: 2
   - image: {fileID: 0}
     character:
@@ -40,6 +41,7 @@ MonoBehaviour:
     contentText: {fileID: 0}
     currentContent: 
     speaker: Player1
+    audioClip: {fileID: 0}
     renderPos: 0
   - image: {fileID: 0}
     character:
@@ -52,6 +54,7 @@ MonoBehaviour:
     contentText: {fileID: 0}
     currentContent: 
     speaker: Player3
+    audioClip: {fileID: 0}
     renderPos: 1
   background: {fileID: 21300000, guid: fe675f7f296f0d54aa7b8107e290688b, type: 3}
   nextGroup: {fileID: 11400000, guid: 0462d277b229cab489a619aad7c7fd1b, type: 2}

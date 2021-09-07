@@ -33,3 +33,5 @@ MonoBehaviour:
   - startNodeGuid: ea9faea1-3e0b-4690-8cce-22657dd7fc3f
     endNodeGuid: a894a6cd-9b3b-48a1-9434-d4d8fd3f8dab
     startPortIndex: 0
+  graphViewScale: {x: 0.375937, y: 0.375937, z: 1}
+  graphViewPosition: {x: 196, y: 234.4, z: 0}
